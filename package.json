@@ -1,0 +1,30 @@
+{
+  "name": "climinegame",
+  "private": false,
+  "version": "1.0.0",
+  "description": "A simple and zero-opinion typescript starter template for building cross-platform command line applications.",
+  "author": "Johnatas Rabelo <johnatasr@hotmail.com>",
+  "keywords": [
+    "typescript",
+    "cli",
+    "starter"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "bin": "./dist/cli.js",
+  "files": [
+    "dist/**/*",
+    "!dist/**/*.test.js"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist/ ./exec/",
+    "build": "npm run clean && tsc",
+    "test": "npm run build && ava --verbose",
+    "bundle": "npm run build && pkg . --out-dir ./exec/",
+    "start": "ts-node ./app/cli.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
