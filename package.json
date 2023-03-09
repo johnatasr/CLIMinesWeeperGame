@@ -2,7 +2,7 @@
   "name": "climinesweepergame",
   "private": false,
   "version": "1.0.0",
-  "description": "A simple and zero-opinion typescript starter template for building cross-platform command line applications.",
+  "description": "This is a simple command line interface (CLI) implementation of the classic Minesweeper game using TypeScript.",
   "author": "Johnatas Rabelo <johnatasr@hotmail.com>",
   "keywords": [
     "typescript",
