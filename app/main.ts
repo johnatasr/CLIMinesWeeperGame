@@ -1,14 +1,17 @@
-export default class MineBoard {
+export default class MinesWeeperCore {
 
-    ROWS: number = 8;
-    COLS: number = 8;
-    MINES: number = 10;
+    readonly ROWS: number = 8;
+    readonly COLS: number = 8;
+    readonly MINES: number = 10;
 
     private board: Array<Array<number | string | any>>;
     private fakeBoard: Array<Array<number | string | any>>;
     private mines: Array<Array<number>>;
-  
+
     constructor() {
+        /**
+        * Constructs a new MineWeeperCore instance and starts a new game.
+        */
         this.board = [];
         this.fakeBoard = [];
         this.mines = [];
@@ -16,6 +19,9 @@ export default class MineBoard {
     }
 
     public startGame(): void {
+        /**
+        * Starts a new game by initializing the board and placing the mines.
+        */
         this.board = [];
         this.fakeBoard = [];
         this.mines = [];
@@ -24,7 +30,9 @@ export default class MineBoard {
     }
 
     private initBoard(): void {
-        // Initialize the board, state, and place mines randomly
+        /**
+        * Initializes the board by setting all cells to empty and randomly placing the mines.
+        */
         for (var row = 0; row < this.ROWS; row++) {
             this.board[row] = [];
             this.fakeBoard[row] = [];
@@ -47,6 +55,9 @@ export default class MineBoard {
     }
 
     private populateMines(): void {
+        /**
+        * Populates the board with mine counts based on the mine locations.
+        */
         for (var i = 0; i < this.mines.length; i++) {
             let row: number = this.mines[i][0];
             let col: number = this.mines[i][1];
@@ -60,16 +71,20 @@ export default class MineBoard {
         }
     }
 
-    public displayBoard() {
-        console.log("  ")
+    public displayBoard(): void {
+        /**
+        * Displays the fake board with the player's guesses.
+        */
         console.log("  " + [...Array(this.COLS).keys()].map(value => value + 1).join(" "));
         for (var row = 0; row < this.ROWS; row++) {
             console.log(row + 1 + " " + this.fakeBoard[row].join(" "));
         }
-        console.log("  ")
     }
 
     public revealCell(row: number, col: number): boolean{
+        /**
+        * Reveals the specified cell on the fake board and updates the board if necessary.
+        */
         this.fakeBoard[row][col] = this.board[row][col];
         if (this.board[row][col] == "*") return false;         
         if (this.board[row][col] == "0") {
@@ -85,6 +100,9 @@ export default class MineBoard {
     }
 
     public isInvalidRowCol(row: number, col: number): boolean {
+        /**
+        * Check if is invalid row and col
+        */
         return (row > this.ROWS || row <= 0) && (col > this.COLS || col <= 0)
     }
 }
